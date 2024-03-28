@@ -1,8 +1,10 @@
+import {AppLayout} from './components/ui/layuouts'
+
 function App() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  return(
+    <AppLayout>
+       <h1 className="bg-green-300 font-bold text-2xl underline">ZoriPro Prestamos DeFi</h1> 
+    </AppLayout>    
   )
 }
 
