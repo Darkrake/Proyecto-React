@@ -1,9 +1,10 @@
 import {AppLayout} from './components/ui/layuouts'
+import {Home} from './pages'
 
 function App() {
   return(
     <AppLayout>
-       <h1 className="underline">ZoriPro</h1> 
+       <Home/> 
     </AppLayout>    
   )
 }
