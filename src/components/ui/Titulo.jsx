@@ -1,8 +1,11 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 export default function Titulo({ children }) {
-  return <h3 className="font-bold text-lg mb-2 w-fit text-slate-700">{children}</h3>
+  return (
+    <h2 className="text-sm sm:text-xl text-green-500 font-bold">{children}</h2>
+  )
 }
+
 Titulo.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.string.isRequired,
 }
