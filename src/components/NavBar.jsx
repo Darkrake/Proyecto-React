@@ -1,14 +1,34 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-export default function NavBar(){
+export default function Navbar() {
   return (
-  
-      <nav className="flex items-center justify-between bg-gray-200 p-4">
-          <Link to="../pages/InicioYAutenticacion" className="text-blue-900 font-bold mr-4">Autenticación</Link>
-          <Link to="../pages/AltaPrestamista.jsx" className="text-blue-900 font-bold mr-4">Alta Prestamista</Link>
-          <Link to="../pages/GestionUsuarios" className="text-blue-900 font-bold mr-4">Gestión de Usuarios</Link>
-          <Link to="../pages/OperacionesPrestamos" className="text-blue-900 font-bold">Operaciones de Préstamos</Link>
-      </nav>
-  
+    <nav >
+      <ul className="flex justify-center">
+        <li className="p-1">
+          <Link to="/" className="hidden lg:block">
+            <button className="border-s px-2">Autenticacion</button>
+          </Link>
+          <Link to="/" className="lg:hidden">
+            <button className="border-s px-2">Autenticacion</button>
+          </Link>
+        </li>
+        <li className="py-1">
+          <Link to="/gestionUsuarios" className="hidden lg:block">
+            <button className="border-s px-2 ">Gesti6n de Usuarios</button>
+          </Link>
+          <Link to="/gestionUsuarios" className="lg:hidden">
+            <button className="border-s px-2 ">Usuarios</button>
+          </Link>
+        </li>
+        <li className="py-1">
+          <Link to="/operacionesprestamos" className="hidden lg:block">
+            <button className="px-2 ">Operaciones de Prestamos</button>
+          </Link>
+          <Link to="/operacionesprestamos" className="lg:hidden">
+            <button className="px-2 ">Prestamos</button>
+          </Link>
+        </li>
+      </ul>
+    </nav>    
   )
 }
