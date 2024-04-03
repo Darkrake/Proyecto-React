@@ -1,22 +1,18 @@
-import { AppLayout } from './components/ui/layuouts'
-import { Home } from './pages'
+import { AppLayout, Ruta } from "./components/ui/layuouts"
 import { WagmiConfig } from "wagmi"
 import { ConnectKitProvider } from "connectkit"
-import { config } from './components/config/wagmi'
-
-
-
-function App() {
-  
-  return(
-    <WagmiConfig config={config}>
-      <ConnectKitProvider>
-        <AppLayout>
-          <Home/> 
-        </AppLayout>   
-      </ConnectKitProvider>
-    </WagmiConfig> 
+import { config } from "./components/config"
+import { Autenticacion } from "./pages"
+export default function App() {  
+  return(    
+      <WagmiConfig config={config}>
+          <ConnectKitProvider>
+          <AppLayout>
+            <Autenticacion />
+            <Ruta/>
+          </AppLayout>   
+        </ConnectKitProvider>
+      </WagmiConfig>    
   )
 }
 
-export default App
