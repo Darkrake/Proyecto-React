@@ -1,5 +1,5 @@
 import { Titulo, TextInput, Boton } from "./ui"
-import { ABIZoriPro } from "../contracts/ABIs"
+import { ABIZoriPro } from "../contracts/ABI/ABIZoriPro"
 import { useAccount, useContractWrite, usePrepareContractWrite, useWaitForTransaction} from "wagmi"
 import { useState, useEffect } from "react"
 import { toast } from "react-hot-toast"

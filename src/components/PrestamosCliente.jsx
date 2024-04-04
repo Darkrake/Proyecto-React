@@ -1,6 +1,6 @@
 import { Titulo, TextInput, Boton } from "./ui";
 
-export default function PrestamosClientes() {
+export default function PrestamosCliente() {
   return (
     <section className="grid gap-3">
       <Titulo>Consulta tus Prestamos</Titulo>

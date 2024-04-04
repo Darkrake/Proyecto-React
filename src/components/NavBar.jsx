@@ -13,18 +13,18 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="py-1">
-          <Link to="/gestionUsuarios" className="hidden lg:block">
-            <button className="border-s px-2 ">Gesti6n de Usuarios</button>
+          <Link to="/GestionUsuarios" className="hidden lg:block">
+            <button className="border-s px-2 ">Gestion de Usuarios</button>
           </Link>
-          <Link to="/gestionUsuarios" className="lg:hidden">
+          <Link to="/GestionUsuarios" className="lg:hidden">
             <button className="border-s px-2 ">Usuarios</button>
           </Link>
         </li>
         <li className="py-1">
-          <Link to="/operacionesprestamos" className="hidden lg:block">
+          <Link to="/OperacionesPrestamos" className="hidden lg:block">
             <button className="px-2 ">Operaciones de Prestamos</button>
           </Link>
-          <Link to="/operacionesprestamos" className="lg:hidden">
+          <Link to="/OperacionesPrestamos" className="lg:hidden">
             <button className="px-2 ">Prestamos</button>
           </Link>
         </li>

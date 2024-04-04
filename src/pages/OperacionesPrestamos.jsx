@@ -1,4 +1,4 @@
-import {  SolicitarPrestamo, ReembolsarPrestamo, PrestamosClientes, AprobarPrestamo, DepositarGarantia,LiquidarGarantia} from "../components"
+import {  SolicitarPrestamo, ReembolsarPrestamo, PrestamosCliente, AprobarPrestamo, DepositarGarantia,LiquidarGarantia} from "../components"
 export default function OperacionesPrestamos() {
   return (
     <div>
@@ -32,7 +32,7 @@ export default function OperacionesPrestamos() {
               <LiquidarGarantia />
             </div>
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <PrestamosClientes />
+              <PrestamosCliente />
             </div>
           </section>
         </div>

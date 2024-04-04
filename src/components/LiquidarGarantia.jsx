@@ -13,7 +13,7 @@ export default function LiquidarGarantia() {
           />
           <TextInput
             type="number"
-            placeholder="Introduce el ID del Préstamo"
+            placeholder="Introduce el ID del PrEstamo"
           />
         </div>
         <div className="grid p-2">

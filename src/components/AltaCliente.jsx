@@ -1,8 +1,8 @@
 import { Titulo, TextInput, Boton } from "./ui"
-import { ABIZoriPro } from "../contracts/ABIs"
+import { ABIZoriPro } from "../contracts/ABI/ABIZoriPro"
 import { useAccount, useContractRead, useContractWrite, usePrepareContractWrite, useWaitForTransaction} from "wagmi"
 import { useState, useEffect } from "react"
-import { toast } from "react-hot-toast"
+import { toast } from 'react-hot-toast'
 
 export default function AltaCliente() {
   const [clientAddress, setClientAddress] = useState("")
@@ -63,7 +63,7 @@ export default function AltaCliente() {
           ? isTransactionLoading
             ? "Tramitando Alta Nuevo Cliente"
             : "Alta Cliente"
-          : "Operación reservada a los Empleados Prestamistas"}
+          : "Operacion reservada a los Empleados Prestamistas"}
       </Boton>
     </section>
   )
