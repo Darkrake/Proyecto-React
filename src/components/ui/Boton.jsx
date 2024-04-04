@@ -1,8 +1,8 @@
-import { PropTypes } from "prop-types";
-import IndicadorCarga from "./IndicadorCarga";
+import { PropTypes } from "prop-types"
+import IndicadorCarga from "./IndicadorCarga"
 
 export default function Boton({
-  type = "button", disabled, children, onClick, isLoading,}) {
+  type = "button", disabled, children, onClick, isLoading}) {
   return (
     <button
       type={type}
@@ -18,7 +18,7 @@ export default function Boton({
         {children}
       </span>
     </button>
-  );
+  )
 }
 
 Boton.propTypes = {

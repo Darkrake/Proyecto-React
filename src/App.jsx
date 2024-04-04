@@ -1,4 +1,5 @@
-import { AppLayout, Ruta } from "./components/ui/layuouts"
+import { AppLayout } from "./components/ui/layouts"
+import { AppRouter } from "./routes"
 import { WagmiConfig } from "wagmi"
 import { ConnectKitProvider } from "connectkit"
 import { config } from "./config/wagmi"
@@ -9,7 +10,7 @@ export default function App() {
           <ConnectKitProvider>
           <AppLayout>
             <Autenticacion />
-            <Ruta/>
+            <AppRouter/>
           </AppLayout>   
         </ConnectKitProvider>
       </WagmiConfig>    

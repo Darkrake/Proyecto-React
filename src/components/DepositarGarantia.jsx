@@ -1,7 +1,7 @@
 import { Titulo, TextInput, Boton } from "./ui";
 export default function DepositarGarantia(){
   <section className="grid gap-3">
-      <Titulo>Depositar GarantIa</Titulo>
+      <Titulo>Depositar Garantia</Titulo>
 
       <form className="grid gap-3">
         <div className="grid gap-3 border-2 rounded-lg p-2">
@@ -9,7 +9,7 @@ export default function DepositarGarantia(){
             type="number"
             placeholder="Indica el ID del Préstamo a Reembolsar"
           />
-          <Boton>Depositar GarantIa</Boton>
+          <Boton>Depositar Garantia</Boton>
         </div>
       </form>
     </section>

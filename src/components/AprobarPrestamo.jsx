@@ -3,13 +3,13 @@ import { Titulo, TextInput, Boton } from "./ui";
 export default function AprobarPrestamo() {
   return (
     <section className="grid gap-3">
-      <Titulo>Aprobar Préstamo</Titulo>
+      <Titulo>Aprobar Prestamo</Titulo>
 
       <form className="grid gap-1 border-2 rounded-lg">
         <div className="grid gap-3 p-2">
           <TextInput
             type="texto"
-            placeholder="Introduce dirección del Solicitante"
+            placeholder="Introduce direccion del Solicitante"
           />
           <TextInput
             type="number"
@@ -17,7 +17,7 @@ export default function AprobarPrestamo() {
           />
         </div>
         <div className="grid p-2 ">
-          <Boton>Aprobar Préstamo</Boton>
+          <Boton>Aprobar Prestamo</Boton>
         </div>
       </form>
     </section>

@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-
+import { Link } from "react-router-dom"
 export default function Navbar() {
   return (
     <nav >
@@ -13,18 +12,18 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="py-1">
-          <Link to="/GestionUsuarios" className="hidden lg:block">
+          <Link to="/gestion-usuarios" className="hidden lg:block">
             <button className="border-s px-2 ">Gestion de Usuarios</button>
           </Link>
-          <Link to="/GestionUsuarios" className="lg:hidden">
+          <Link to="/gestion-usuarios" className="lg:hidden">
             <button className="border-s px-2 ">Usuarios</button>
           </Link>
         </li>
         <li className="py-1">
-          <Link to="/OperacionesPrestamos" className="hidden lg:block">
-            <button className="px-2 ">Operaciones de Prestamos</button>
+          <Link to="/operaciones-prestamos" className="hidden lg:block">
+            <button className="px-2 ">Operaciones con Prestamos</button>
           </Link>
-          <Link to="/OperacionesPrestamos" className="lg:hidden">
+          <Link to="/operaciones-prestamos" className="lg:hidden">
             <button className="px-2 ">Prestamos</button>
           </Link>
         </li>

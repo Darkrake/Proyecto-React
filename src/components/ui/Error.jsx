@@ -1,5 +1,5 @@
-import { MdInfoOutline } from "react-icons/md";
-import PropTypes from "prop-types";
+import { MdInfoOutline } from "react-icons/md"
+import PropTypes from "prop-types"
 
 export default function ErrorInfo({ message }) {
   return (
