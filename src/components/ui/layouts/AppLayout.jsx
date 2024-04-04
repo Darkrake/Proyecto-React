@@ -1,6 +1,5 @@
 import {Header, Footer,Navbar} from "../../index"
 import PropTypes from 'prop-types'
-
 export default function AppLayout({children}){
     return(
         <>
