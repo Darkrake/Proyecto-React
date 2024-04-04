@@ -1,8 +1,7 @@
-import { Route, Routes } from "react-router-dom";
-import { Autenticacion, GestionUsuarios, OperacionesPrestamos} from "../../../pages";
-import { Home } from "../../../pages";
-
-export default function Ruta() {
+import { Route, Routes } from "react-router-dom"
+import { Autenticacion, GestionUsuarios, OperacionesPrestamos} from "../components"
+import { Home } from "../pages"
+export default function AppRouter() {
   return (
     <Routes>
       <Route index component={Home} />
