@@ -1,5 +1,5 @@
 import { AppLayout } from "./components/ui/layouts"
-import { AppRouter } from "./routes"
+import  AppRouter  from "./routes/AppRouter"
 import { WagmiConfig } from "wagmi"
 import { ConnectKitProvider } from "connectkit"
 import { config } from "./config/wagmi"
