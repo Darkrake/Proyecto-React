@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { toast } from 'react-hot-toast'
 
 export default function AltaCliente() {
-  const [clientAddress, setClientAddress] = useState("")
+  const [nuevoCliente, setNuevoCliente] = useState("")
   const { address } = useAccount()
   const { data } = useContractRead({
     address: import.meta.env.VITE_ZoriProPrestamosDefi,
@@ -17,8 +17,8 @@ export default function AltaCliente() {
     address: import.meta.env.VITE_ZoriProPrestamosDefi,
     abi: ABIZoriPro,
     functionName: "altaCliente",
-    enabled: clientAddress,
-    args: [clientAddress],
+    enabled: nuevoCliente,
+    args: [nuevoCliente],
   })
   const { data: writeData, write } = useContractWrite(config)
   const {
@@ -29,13 +29,13 @@ export default function AltaCliente() {
     hash: writeData?.hash,
   })
   const handleClientAddressInputChange = (event) => {
-    setClientAddress(event.target.value)
+    setNuevoCliente(event.target.value)
   }
 
   useEffect(() => {
     if (isTransactionSuccess) {
       toast.success("Cliente dado de alta con éxito")
-      setClientAddress("")
+      setNuevoCliente("")
     }
     if (isTransactionError) {
       toast.error("Error: La transacción ha fallado")
@@ -47,15 +47,15 @@ export default function AltaCliente() {
       <form action="">
         <TextInput
           type="text"
-          placeholder="Address Nuevo Cliente 0x..."
+          placeholder="Address Nuevo Cliente"
           label="clientAddress"
-          value={clientAddress}
+          value={nuevoCliente}
           disabled={!isLenderEmployee || isTransactionLoading}
           onChange={handleClientAddressInputChange}
         />
       </form>
       <Boton
-        disabled={!clientAddress || !isLenderEmployee || isTransactionLoading}
+        disabled={!nuevoCliente || !isLenderEmployee || isTransactionLoading}
         isLoading={isTransactionLoading}
         onClick={() => write?.()}
       >
@@ -63,7 +63,7 @@ export default function AltaCliente() {
           ? isTransactionLoading
             ? "Tramitando Alta Nuevo Cliente"
             : "Alta Cliente"
-          : "Operacion reservada a los Empleados Prestamistas"}
+            : "Operacion reservada a los Empleados Prestamistas"}
       </Boton>
     </section>
   )
