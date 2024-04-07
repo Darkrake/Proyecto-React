@@ -57,13 +57,13 @@ contract ZoriProPrestamoDefi{
     }
 
     constructor(){
-        socioPrincipal==msg.sender;
+        socioPrincipal=msg.sender;
         empleadosPrestamista[socioPrincipal]=true;
     }
     //funcion que da de alta al nuevo prestamista, np porque modifica el mapping empleadosPrestamista
     //si ya esta dado de alta se le envia un error.
     function altaPrestamista(address nuevoPrestamista)public soloSocioPrincipal {
-        require(empleadosPrestamista[nuevoPrestamista]==false, "Ya has sido dado de alta");
+        require(!empleadosPrestamista[nuevoPrestamista], "Ya has sido dado de alta");
         empleadosPrestamista[nuevoPrestamista]=true;
 
     }
@@ -77,8 +77,7 @@ contract ZoriProPrestamoDefi{
 
     function depositarGarantia() public payable soloClienteRegistrado{
         require(msg.value>0,"Debe enviar una cantidad mayor que 0");
-        Cliente storage cliente = clientes[msg.sender];
-        cliente.saldoGarantia += msg.value;
+        clientes[msg.sender].saldoGarantia+=msg.value;
     }
 
     function solicitarPrestamos(uint256 monto_, uint256 plazo_) public soloClienteRegistrado returns (uint256){
@@ -95,14 +94,13 @@ contract ZoriProPrestamoDefi{
         nuevoPrestamo.reembolsado = false;
         nuevoPrestamo.liquidado = false;
         clientes[msg.sender].prestamoIds.push(nuevoId);
-        emit SolicitudPrestamo(nuevoPrestamo.prestatario, nuevoPrestamo.monto, nuevoPrestamo.plazo);
+        emit SolicitudPrestamo(msg.sender, monto_, plazo_);
         return nuevoId;
     }
 
     function aprobarPrestamo(address prestatario_, uint256 id_) public soloEmpleadoPrestamista {
         Cliente storage prestatario = clientes[prestatario_];
-        require(id_ > 0, "No estas registrado como prestatario");
-        require(prestatario.prestamoIds.length>=id_, "El id del prestamo no es valido");
+        require(id_ > 0 && id_ <= prestatario.prestamoIds.length, "No estas registrado como prestatario");
         Prestamo storage prestamo = prestatario.prestamos[id_];
         require(!prestamo.aprobado,"Tu prestamo no esta aprobado");
         require(!prestamo.reembolsado,"Tu prestamo se ha reembolsado");
@@ -114,8 +112,7 @@ contract ZoriProPrestamoDefi{
 
     function reembolsarPrestamo(uint256 id_) public soloClienteRegistrado{
         Cliente storage prestatario = clientes[msg.sender];
-        require(id_> 0, "El identificador no es valido");
-        require(prestatario.prestamoIds.length>=id_, "El identificador del prestamo no es valido");
+        require(id_> 0 &&id_<=prestatario.prestamoIds.length, "El identificador no es valido");
         Prestamo storage prestamo = prestatario.prestamos[id_];
         require(prestamo.prestatario== msg.sender, "No puedes acceder al reembolso ");
         require(prestamo.aprobado,"Tu prestamo no esta aprobado");
@@ -130,8 +127,7 @@ contract ZoriProPrestamoDefi{
 
     function liquidarGarantia (address prestatario_, uint256 id_) public soloEmpleadoPrestamista{
         Cliente storage prestatario = clientes[prestatario_];
-        require(id_> 0, "El identificador no es valido");
-        require(prestatario.prestamoIds.length>=id_, "El identificador del prestamo no es valido");
+        require(id_> 0 && id_<=prestatario.prestamoIds.length, "El identificador no es valido");
         Prestamo storage prestamo = prestatario.prestamos[id_];
         require(prestamo.aprobado, "El prestamo no ha sido aprobado");
         require(!prestamo.reembolsado, "El prestamo ya ha sido reembolsado");
@@ -142,3 +138,14 @@ contract ZoriProPrestamoDefi{
         prestatario.saldoGarantia -= prestamo.monto;
         emit GarantiaLiquidada(prestamo.prestatario, prestamo.monto);   
     }
+
+    function obtenerPrestamosPorPrestatario(address prestatario_) public view returns(uint256[] memory){
+        return (clientes[prestatario_].prestamoIds);
+    }
+
+    function obtenerDetalleDePrestamo(address prestatario_, uint256 id_) public view returns(Prestamo memory) {
+        return (clientes[prestatario_].prestamos[id_]);
+    }
+
+    
+}
