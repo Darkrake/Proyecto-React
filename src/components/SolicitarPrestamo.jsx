@@ -13,7 +13,7 @@ export default function SolicitarPrestamo() {
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
     abi: ABIZoriPro,
-    functionName: "depositarGarantia",
+    functionName: "solicitarPrestamo",
     args: [saldoGarantia, parseEther(monto), plazoDevolucion],
   })
   const { data, write } = useContractWrite(config)
@@ -28,8 +28,7 @@ export default function SolicitarPrestamo() {
     setSaldoGarantia(event.target.value)
   }
   const handleMonto = (event) => {
-    console.log("Wei", parseEther(monto))
-    setMonto(event.target.value)
+     setMonto(event.target.value)
   }
   const handlePlazoDevolucion = (event) => {
     setPlazoDevolucion(event.target.value)
@@ -57,20 +56,20 @@ export default function SolicitarPrestamo() {
   }, [isTransactionSuccess, isTransactionError]);
 
   return (
-    <section className="grid gap-3">
+    <section className="grid gap-1">
       <Titulo>Solicitar Prestamo</Titulo>
 
       <form className="grid gap-1 border-2 rounded-lg">
-        <div className="grid gap-3 p-2">
+        <div className="grid gap-1 p-1">
           <TextInput
             type="number"
-            placeholder="Deposita como Garantia el Monto igual al solicitado"
+            placeholder="Deposita Garantia, Monto igual al solicitado"
             label="saldoGarantia"
             value={saldoGarantia}
             onChange={handleSaldoGarantiaInputChange}
           />
         </div>
-        <div className="grid p-2">
+        <div className="grid p-1">
           <Boton
             disabled={!saldoGarantia || isTransactionLoading}
             isLoading={isTransactionLoading}
@@ -84,15 +83,14 @@ export default function SolicitarPrestamo() {
       </form>
 
       <form className="grid gap-1 border-2 rounded-lg">
-        <div className="grid gap-3 p-2">
+        <div className="grid gap-2 p-1">
           <TextInput
             type="number"
-            placeholder="Indica la cantidad (Monto) en Ether que se Solicita"
+            placeholder="Cantidad en Ether que solicita"
             label="monto"
             value={monto}
             onChange={handleMonto}
           />
-          <p>{monto}</p>
           <TextInput
             type="number"
             placeholder="Indica el Plazo de Devolucion"
@@ -101,7 +99,7 @@ export default function SolicitarPrestamo() {
             onChange={handlePlazoDevolucion}
           />
         </div>
-        <div className="grid p-2">
+        <div className="grid p-1">
           <Boton
             disabled={!monto || !plazoDevolucion || isTransactionLoading}
             isLoading={isTransactionLoading}
