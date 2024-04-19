@@ -29,10 +29,10 @@ Boton.propTypes = {
   onClick: PropTypes.func,
 };
 
-Boton.propTypes = {
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  children: PropTypes.node.isRequired
-}
+//Boton.propTypes = {
+  //type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  //onClick: PropTypes.func,
+  //disabled: PropTypes.bool,
+  //isLoading: PropTypes.bool,
+  //children: PropTypes.node.isRequired
+//}

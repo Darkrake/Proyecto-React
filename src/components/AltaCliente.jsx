@@ -8,41 +8,44 @@ export default function AltaCliente() {
   const [addressCliente, setAddressCliente] = useState("")
   const { address } = useAccount()
   const { data } = useContractRead({
-    address: import.meta.env.VITE_ZoriProPrestamosDefi,
+    address: import.meta.env.VITE_ZoriProPrestamoDefi,
     abi: ABIZoriPro,
     functionName: "altaCliente",
     })
- 
+    console.log(data)
+  
   const isLenderEmployee = address === data
   const { config } = usePrepareContractWrite({
-    address: import.meta.env.VITE_ZoriProPrestamosDefi,
+    address: import.meta.env.VITE_ZoriProPrestamoDefi,
     abi: ABIZoriPro,
     functionName: "altaCliente",
     enabled: addressCliente,
-    args: [addressCliente],
-   
-  })
+    args: [addressCliente],   
+  }) 
+ 
+  console.log(address)
   const { data: writeData, write } = useContractWrite(config)
   const {
     isLoading: isTransactionLoading,
     isSuccess: isTransactionSuccess,
     isError: isTransactionError,
   } = useWaitForTransaction({
-    hash: writeData?.hash,
-  
+    hash: writeData?.hash  
   })
-  console.log({writeData})
-  const handleNuevoClienteInputChange = (event) => {
+
+  const handleAddressClienteInputChange = (event) => {
     setAddressCliente(event.target.value)
   }
-  
+ 
   useEffect(() => {
-    if (isTransactionSuccess) {
-      toast.success("Cliente dado de alta con éxito")
+    if (isTransactionSuccess) {      
       setAddressCliente("")
+      toast.success("Cliente dado de alta con éxito")
+      console.log(isTransactionSuccess)
     }
     if (isTransactionError) {
       toast.error("Error: La transacción ha fallado")
+      console.log(isTransactionError)
     }
   }, [isTransactionSuccess, isTransactionError])
   
@@ -50,27 +53,27 @@ export default function AltaCliente() {
     <section className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
       <Titulo>Alta Cliente</Titulo>
       <form action="">
-        <TextInput
-          type="text"
+        <TextInput 
+          type="text" 
           placeholder="Address Nuevo Cliente"
           label="nuevoCliente"
           value={addressCliente}          
           disabled={!isLenderEmployee || isTransactionLoading}
-          onChange={handleNuevoClienteInputChange}
-        />
-
-      </form>
-      <Boton
-        disabled={!addressCliente || !isLenderEmployee || isTransactionLoading}
-        isLoading={isTransactionLoading}
-        onClick={() => write?.()}
-      >
+          onChange={handleAddressClienteInputChange}
+        />   
+        </form>     
+        <Boton
+          disabled={!addressCliente || !isLenderEmployee || isTransactionLoading}
+          isLoading={isTransactionLoading}
+          onClick={() => write?.()}
+        >
           {isLenderEmployee
           ? isTransactionLoading
             ? "Tramitando Alta Nuevo Cliente"
             : "Alta Cliente"
             : "Operacion reservada a los Empleados Prestamistas"}
-      </Boton>
+        </Boton>
+            
     </section>
   )
 }
